@@ -1,2 +1,2 @@
 # huh
-In dashboard documentation done with easy way
+In dashboard documentation done the easy way
