@@ -1,5 +1,5 @@
 # Who?
-_huh_ was conceptualized by [secret pizza party] (https://secretpizza.party) and brought to life by the amazing [Dan Hauk](https://danhauk.com/).
+_huh_ was conceptualized by [secret pizza party](https://secretpizza.party) and brought to life by the amazing [Dan Hauk](https://danhauk.com/).
 
 # What?
 _huh_ is the best way to offer in dashboard documentation for all your WordPress projects. The content is generated from a markdown file which makes it super quick & easy to update your documentation whenever you want.
