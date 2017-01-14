@@ -1,21 +1,5 @@
 <?php
 
-/*
-Plugin Name: huh
-Plugin URL: https://secretpizza.party/
-Description: Add support docs to your theme
-Author: secret pizza party
-Author URI: https://secretpizza.party/
-Version: 0.1
-
-Released under the GPL v.2 license.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-*/
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
