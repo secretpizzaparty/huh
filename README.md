@@ -33,7 +33,7 @@ Once you have your documentation formatted correctly, adding _huh_ to your theme
 Just download the zipped plugin and extract it to your theme directory. At the bottom of your theme's `functions.php` file add the following lines:
 
 ``` php
-require get_template_directory() . '/huh/huh.php';
+require get_stylesheet_directory() . '/huh/huh.php';
 function secretpizzaparty_huh() {
 	// Enter the URL of your markdown file below
 	$markdown_url = 'https://raw.githubusercontent.com/secretpizzaparty/huh/master/README.md';
