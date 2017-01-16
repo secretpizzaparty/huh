@@ -51,14 +51,18 @@ _huh_ is open source. If you found a bug, [report it here](https://github.com/se
 #### Development Workflow
 1. Make sure you have `git`, `node`, and `npm` installed and a working WordPress installation.
 2. Clone this repository inside your theme directory.
-```
-$ git clone https://github.com/secretpizzaparty/huh.git
-$ cd huh
-```
+
+	```
+	$ git clone https://github.com/secretpizzaparty/huh.git
+	$ cd huh
+	```
+
 3. Watch the front-end CSS/Sass for changes and rebuild accordingly with [Grunt](https://github.com/gruntjs/grunt). Please only modify the Sass files to keep the CSS consistent and clean.
-```
-$ npm install
-$ grunt watch
-```
+
+	```
+	$ npm install
+	$ grunt watch
+	```
+
 4. Open `/wp-admin/` in your browser.
 5. Have fun!
