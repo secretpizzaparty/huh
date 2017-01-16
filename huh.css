@@ -126,6 +126,7 @@
   background: #009688;
   border-radius: 4px 4px 0 0;
   height: 60px;
+  flex-shrink: 0;
   overflow: hidden;
   position: relative;
   transition: background 0.3s; }
