@@ -8,7 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Main huh class.
  */
 class WP_Huh {
-
+	public $markdown_doc_url = null;
+	
 	/**
 	 * Constructor.
 	 */
@@ -19,9 +20,11 @@ class WP_Huh {
 	 * @param string $markdown_doc_url URL of the raw markdown file.
 	 */
 	public function init( $markdown_doc_url ) {
+		$this->markdown_doc_url = $markdown_doc_url;
+		
 		if ( is_admin() || is_customize_preview() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'huh_load_scripts' ) );
-			$this->display_huh( $markdown_doc_url );
+			add_action( 'admin_footer', array( $this, 'display_huh' ) );
 		}
 	}
 
@@ -29,13 +32,13 @@ class WP_Huh {
 	 * Enqueue CSS and JS.
 	 */
 	public function huh_load_scripts() {
-		wp_register_style( 'huh_admin_css', get_template_directory_uri().'/huh/huh.css', false );
+		wp_register_style( 'huh_admin_css', get_stylesheet_directory_uri().'/huh/huh.css', false );
 		wp_enqueue_style( 'huh_admin_css' );
 
-		wp_register_script( 'huh_admin_js', get_template_directory_uri().'/huh/js/huh.js', false );
+		wp_register_script( 'huh_admin_js', get_stylesheet_directory_uri().'/huh/js/huh.js', false );
 		wp_enqueue_script( 'huh_admin_js' );
 
-		wp_register_script( 'huh_markdown_js', get_template_directory_uri().'/huh/js/marked.js', false );
+		wp_register_script( 'huh_markdown_js', get_stylesheet_directory_uri().'/huh/js/marked.js', false );
 		wp_enqueue_script( 'huh_markdown_js' );
 	}
 
@@ -54,15 +57,14 @@ class WP_Huh {
 	 * Display the HTML.
 	 * @param $markdown_doc_url URL of the raw markdown file.
 	 */
-	public function display_huh( $markdown_doc_url ) {
+	public function display_huh() {
 		$colors = $this->huh_get_admin_colors();
 		$huh_accent_color = $colors[2];
 
-		ob_start();
 		?>
-		<script type="text/javascript">var huhDocUrl = '<?php echo $markdown_doc_url; ?>';</script>
+		<script type="text/javascript">var huhDocUrl = <?php echo json_encode( $this->markdown_doc_url ); ?>;</script>
 		<div class="huh-launcher">
-			<button class="huh-launcher--button" id="huh-launcher--button" data-accent-color="<?php echo $huh_accent_color; ?>">
+			<button class="huh-launcher--button" id="huh-launcher--button" data-accent-color="<?php echo esc_attr( $huh_accent_color ); ?>">
 				<svg class="huh-launcher--icon-enable" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve"><g><circle cx="50" cy="63.5" r="3"></circle><g><path d="M88.6,50c0-21.3-17.3-38.6-38.6-38.6S11.4,28.7,11.4,50S28.7,88.6,50,88.6S88.6,71.3,88.6,50z M15.6,50    c0-18.9,15.4-34.4,34.4-34.4S84.4,31.1,84.4,50S68.9,84.4,50,84.4S15.6,68.9,15.6,50z"></path><path d="M55.8,42.1c0.1,2.5-1.4,4.8-3.7,5.7c-2.6,1-4.3,3.6-4.3,6.5v1.4h4.2v-1.4c0-1.1,0.7-2.2,1.6-2.6c4-1.6,6.5-5.5,6.3-9.8    c-0.2-5.1-4.5-9.4-9.6-9.6C47.7,32.1,45,33.1,43,35c-2,1.9-3.1,4.5-3.1,7.3h4.2c0-1.6,0.6-3.1,1.8-4.2c1.2-1.1,2.7-1.7,4.3-1.6    C53.3,36.6,55.7,39.1,55.8,42.1z"></path></g></g></svg>
 				<svg class="huh-launcher--icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="plus"><path d="M18.36,19.78L12,13.41,5.64,19.78,4.22,18.36,10.59,12,4.22,5.64,5.64,4.22,12,10.59l6.36-6.36,1.41,1.41L13.41,12l6.36,6.36Z"/></g></svg>
 				<span class="huh-launcher--label">Need help?</span>
