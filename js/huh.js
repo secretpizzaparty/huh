@@ -6,7 +6,8 @@ let huhLauncher = '',
 		huhContent = '',
 		huhHeader = '',
 		huhBackButton = '',
-		huhAccentColor = '';
+		huhAccentColor = '',
+		huhTocTriggers = '';
 
 // init
 function huhInit() {
@@ -18,15 +19,11 @@ function huhInit() {
 	huhBackButton = document.querySelector( '#huh-back-to-toc' );
 	huhAccentColor = huhLauncher.getAttribute( 'data-accent-color' );
 
-	// fetch the markdown file
+	// fetch the markdown file (set in huh.php)
 	// then load the content into the container
 	fetch( huhDocUrl )
 		.then( blob => blob.text() )
 		.then( data => loadContent( data ) );
-
-	huhLauncher.addEventListener( 'click', showHideContainer );
-	huhMobileClose.addEventListener( 'click', showHideContainer );
-	huhBackButton.addEventListener( 'click', backToToc );
 }
 
 function loadContent( data ) {
@@ -42,9 +39,8 @@ function loadContent( data ) {
 	// apply accent color
 	applyAccentColor( huhAccentColor );
 
-	// listen for trigger clicks
-	const huhTocTriggers = document.querySelectorAll( '.huh-toc--trigger' );
-	huhTocTriggers.forEach( tocTrigger => tocTrigger.addEventListener( 'click', showContent ) );
+	// bind interaction events after all content is loaded
+	huhBindEvents();
 }
 
 function createContent( data ) {
@@ -88,11 +84,10 @@ function showHideContainer( e ) {
 
 function showContent( e ) {
 	// hide all triggers
-	const otherTriggers = document.querySelectorAll( '.huh-toc--trigger' );
-	otherTriggers.forEach( trigger => {
-		trigger.classList.add( 'hidden' );
-		trigger.classList.remove( 'show' );
-	} );
+	for ( i = 0; i < huhTocTriggers.length; i++ ) {
+		huhTocTriggers[i].classList.add( 'hidden' );
+		huhTocTriggers[i].classList.remove( 'show' );
+	}
 
 	// add a class to indicate current selection
 	e.target.classList.add( 'current' );
@@ -107,19 +102,36 @@ function showContent( e ) {
 }
 
 function backToToc() {
-	const tocTriggers = document.querySelectorAll( '.huh-toc--trigger' );
+	// show all triggers
+	for ( i = 0; i < huhTocTriggers.length; i++ ) {
+		huhTocTriggers[i].classList.remove( 'hidden', 'current' );
+		huhTocTriggers[i].classList.add( 'show' );
+	}
+
+	// hide all content blocks
 	const contentBlocks = document.querySelectorAll( '.huh-toc--content' );
-	tocTriggers.forEach( trigger => {
-		trigger.classList.remove( 'hidden', 'current' );
-		trigger.classList.add( 'show' );
-	} );
-	contentBlocks.forEach( block => block.classList.remove( 'open' ) );
+	for ( i = 0; i < contentBlocks.length; i++ ) {
+		contentBlocks[i].classList.remove( 'open' );
+	}
+
+	// show main header
 	huhHeader.classList.remove( 'with-content' );
 }
 
 function applyAccentColor( color ) {
 	huhLauncher.setAttribute( 'style', 'background:' + color );
 	huhHeader.setAttribute( 'style', 'background:' + color );
+}
+
+function huhBindEvents() {
+	huhLauncher.addEventListener( 'click', showHideContainer );
+	huhMobileClose.addEventListener( 'click', showHideContainer );
+	huhBackButton.addEventListener( 'click', backToToc );
+
+	huhTocTriggers = document.querySelectorAll( '.huh-toc--trigger' );
+	for ( i = 0; i < huhTocTriggers.length; i++ ) {
+		huhTocTriggers[i].addEventListener( 'click', showContent );
+	}
 }
 
 // init after page has loaded to make sure
