@@ -195,6 +195,12 @@
     font-size: 14px; }
   .huh-container--content img {
     max-width: 100%; }
+  .huh-container--content code,
+  .huh-container--content pre {
+    max-width: 100%;
+    overflow: scroll;
+    white-space: pre-wrap;
+    word-wrap: break-word; }
 
 .huh-container--close-mobile {
   cursor: pointer;
