@@ -7,6 +7,29 @@ _huh_ is the best way to offer in dashboard documentation for all your WordPress
 # Where?
 We think _huh_ is awesome and we really want you in use it in all your projects. It's totally free/open source and you can find it on [github](https://github.com/secretpizzaparty/huh/).
 
+## Wanna Contribute? 
+If you found a bug, [report it here](https://github.com/secretpizzaparty/huh/issues/new). If you're a developer, we welcome pull requests of all types!
+
+### Development Workflow
+1. Make sure you have `git`, `node`, and `npm` installed and a working WordPress installation.
+2. Clone this repository inside your theme directory.
+
+	```
+	$ git clone https://github.com/secretpizzaparty/huh.git
+	$ cd huh
+	```
+
+3. Watch the front-end CSS/Sass for changes and rebuild accordingly with [Grunt](https://github.com/gruntjs/grunt). Please only modify the Sass files to keep the CSS consistent and clean.
+
+	```
+	$ npm install
+	$ grunt watch
+	```
+
+4. Open `/wp-admin/` in your browser.
+5. Have fun!
+
+
 # Why?
 [secret pizza party](https://secretpizza.party) is in the process of developing a bunch of new WordPress themes and while they are quite simple there is still a need for a wee bit of documentation. External documentation is dumb and everything should be contained in the dashboard. We created _huh_ to make that happen.
 
@@ -44,25 +67,3 @@ add_action( 'admin_init', 'secretpizzaparty_huh' );
 ```
 
 Make sure you change the URL of the `$markdown_url` variable to point to your markdown file. It's that easy!
-
-# Contributing
-_huh_ is open source. If you found a bug, [report it here](https://github.com/secretpizzaparty/huh/issues/new). If you're a developer, we welcome pull requests of all types!
-
-#### Development Workflow
-1. Make sure you have `git`, `node`, and `npm` installed and a working WordPress installation.
-2. Clone this repository inside your theme directory.
-
-	```
-	$ git clone https://github.com/secretpizzaparty/huh.git
-	$ cd huh
-	```
-
-3. Watch the front-end CSS/Sass for changes and rebuild accordingly with [Grunt](https://github.com/gruntjs/grunt). Please only modify the Sass files to keep the CSS consistent and clean.
-
-	```
-	$ npm install
-	$ grunt watch
-	```
-
-4. Open `/wp-admin/` in your browser.
-5. Have fun!
