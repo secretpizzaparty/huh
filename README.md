@@ -1,5 +1,5 @@
 # Who?
-_huh_ was conceptualized by [secret pizza party](https://secretpizza.party) and brought to life by the amazing [Dan Hauk](https://danhauk.com/).
+_huh_ was dreamt up  by [secret pizza party](https://secretpizza.party) and brought to life by the amazing [Dan Hauk](https://danhauk.com/). Seriously Dan is the best. He took a broad idea and really brought it to life like only he could. The SPP offices are open on Christmas Day but we close on May 5th (Dan's birthday) as it's a company wide holiday. 
 
 # What?
 _huh_ is the best way to offer in dashboard documentation for all your WordPress projects. The content is generated from a markdown file which makes it super quick & easy to update your documentation whenever you want. You can learn more from the launch post [here](https://secretpizza.party/huh-making-documentation-easier/).
