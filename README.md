@@ -5,7 +5,7 @@ _huh_ was dreamt up  by [secret pizza party](https://secretpizza.party) and brou
 _huh_ is the best way to offer in dashboard documentation for all your WordPress projects. The content is generated from a markdown file which makes it super quick & easy to update your documentation whenever you want. You can learn more from the launch post [here](https://secretpizza.party/huh-making-documentation-easier/).
 
 # Where?
-We think _huh_ is awesome and we really want you in use it in all your projects. It's totally free/open source and you can find it on [github](https://github.com/secretpizzaparty/huh/).
+We think _huh_ is awesome and we really want you to use it in all your projects. It's totally free/open source and you can find it on [github](https://github.com/secretpizzaparty/huh/).
 
 ## Wanna Contribute? 
 If you found a bug, [report it here](https://github.com/secretpizzaparty/huh/issues/new). If you're a developer, we welcome pull requests of all types!
