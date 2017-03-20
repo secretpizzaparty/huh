@@ -32,13 +32,13 @@ class WP_Huh {
 	 * Enqueue CSS and JS.
 	 */
 	public function huh_load_scripts() {
-		wp_register_style( 'huh_admin_css', get_stylesheet_directory_uri().'/huh/huh.css', false );
+		wp_register_style( 'huh_admin_css', get_parent_theme_file_uri( '/huh/huh.css' ), false );
 		wp_enqueue_style( 'huh_admin_css' );
 
-		wp_register_script( 'huh_admin_js', get_stylesheet_directory_uri().'/huh/js/huh.js', false );
+		wp_register_script( 'huh_admin_js', get_parent_theme_file_uri( '/huh/js/huh.js' ), false );
 		wp_enqueue_script( 'huh_admin_js' );
 
-		wp_register_script( 'huh_markdown_js', get_stylesheet_directory_uri().'/huh/js/marked.js', false );
+		wp_register_script( 'huh_markdown_js', get_parent_theme_file_uri( '/huh/js/marked.js' ), false );
 		wp_enqueue_script( 'huh_markdown_js' );
 	}
 
